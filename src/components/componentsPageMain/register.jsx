@@ -6,8 +6,8 @@ import { Label } from "@/components/ui/label";
 import Image from 'next/image';
 
 export default function Register({ isLogin, setIsLogin }) {
-  const [usuario, setUsuario] = useState('');
-  const [contrasena, setContrasena] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
@@ -17,22 +17,22 @@ export default function Register({ isLogin, setIsLogin }) {
     setSuccess('');
 
     try {
-      const response = await fetch('/api/register', {
+      const response = await fetch('http://localhost:3000/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          usuario,
-          contrasena,
+          email,
+          password,
         }),
       });
 
       if (response.ok) {
         setSuccess('Registro exitoso');
         // Limpiar los campos de entrada después del registro
-        setUsuario('');
-        setContrasena('');
+        setEmail('');
+        setPassword('');
       } else {
         const errorData = await response.json();
         setError(errorData.message || 'Error al registrar');
@@ -44,7 +44,7 @@ export default function Register({ isLogin, setIsLogin }) {
   };
 
   return (
-    <div className="flex-1 flex justify-content items-center bg-gray-100">
+    <div className="flex-1 flex justify-content mt-10 items-center bg-gray-100">
       <div className="m-auto flex w-full h-[70%]  max-w-4xl overflow-hidden rounded-lg bg-white shadow-lg">
         <div className="flex w-1/2 flex-col items-center justify-center bg-white p-8">
           <div className="mb-8 text-center">
@@ -72,8 +72,8 @@ export default function Register({ isLogin, setIsLogin }) {
               <Input
                 id="usuario"
                 className="mt-1 bg-white w-full text-black"
-                value={usuario}
-                onChange={(e) => setUsuario(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
@@ -85,14 +85,14 @@ export default function Register({ isLogin, setIsLogin }) {
                 id="contrasena"
                 type="password"
                 className="mt-1 w-full bg-white text-black"
-                value={contrasena}
-                onChange={(e) => setContrasena(e.target.value)}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
             {error && <p className="text-red-500">{error}</p>}
             {success && <p className="text-green-500">{success}</p>}
-            <Button  type="submit" className="w-full bg-white text-[#14132F] hover:bg-[#1f1e44] hover:text-white">
+            <Button onClick={handleRegister} type="submit" className="w-full bg-white text-[#14132F] hover:bg-[#1f1e44] hover:text-white">
               Registrar
             </Button>
           </form>

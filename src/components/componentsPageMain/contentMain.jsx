@@ -5,7 +5,7 @@ import Image from "next/image";
 export const Bienvenida = () => {
     return (
         <div className="text-black flex flex-col justify-center">
-            <h1 className="text-4xl self-start text-[#14132f] md:text-6xl font-bold mb-6">BIENVENIDO</h1>
+            <h1 className="text-4xl self-start text-[#14132f] md:text-6xl font-bold mb-6">SESION INICIADA EXITOSAMENTE</h1>
             <p className="text-start max-w-2xl mb-8">
                 Te damos la bienvenida al sistema de gestión de trámites de la Escuela de
                 Ingeniería de Sistemas. A través de esta plataforma, podrás presentar y seguir
