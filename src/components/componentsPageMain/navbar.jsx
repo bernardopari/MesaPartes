@@ -1,7 +1,11 @@
 import Link from 'next/link'
 import { Building2 } from 'lucide-react'
 import { Mail, Phone, Twitter, Facebook, Linkedin } from 'lucide-react'
-
+import Header from '@/components/ui/BotonTheme'
+import { useContext } from 'react'
+import Image from 'next/image'
+import { themeContext } from '@/app/context/ThemeContext'
+import MenuOptions from '@/components/componentsPageMain/MenuOptions'
 export function Contacto() {
   return (
     <div className="w-full bg-gray-900 text-white py-2 px-4 flex justify-between items-center">
@@ -30,19 +34,18 @@ export function Contacto() {
   )
 }
 export default function Navbar() {
+
   return (
-    <nav className="bg-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+    <nav className=" bg-[#14132f] shadow-md w-full">
+  
+        <div className="flex w-[95%] mx-auto justify-between h-16 py-4">
           <div className="flex items-center">
-            <Building2 className="h-8 w-8 text-blue-600" />
-            <span className="ml-2 text-xl font-semibold text-gray-800">INGENIERÍA DE SISTEMAS</span>
+            <Image src="/images/LogoEscuela.png" width={54} height={54}  />
+            
           </div>
-          <div className="flex items-center w-2/4">
-            <Contacto/>
-          </div>
+          <MenuOptions/>
+         
         </div>
-      </div>
     </nav>
   )
 }
