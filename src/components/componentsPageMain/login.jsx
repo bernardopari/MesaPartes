@@ -59,7 +59,7 @@ export default function Login({ isLogin, setIsLogin }) {
   };
 
   return (
-    <div className="flex-1 flex justify-content mt-10 items-center my-auto overflow-hidden bg-white">
+    <div className="flex-1 flex justify-content items-center my-auto overflow-hidden bg-white">
       <div className="m-auto flex justify-content items-center w-full max-w-4xl overflow-hidden rounded-lg bg-white shadow-lg">
         <div className="w-1/2 bg-[#14132F] p-8 text-white">
           <h2 className="mb-4 text-2xl font-bold">INICIAR SESIÓN</h2>
