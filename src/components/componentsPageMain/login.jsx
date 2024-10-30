@@ -10,21 +10,8 @@ export default function Login({ isLogin, setIsLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [isClient, setIsClient] = useState(false);
   const router = useRouter();
-   // Función para verificar si los campos no están vacíos
-   function Inicio(e) {
-    e.preventDefault(); // Evitar el comportamiento predeterminado del formulario
-    if (!email || !password) {
-      setError('Por favor, rellena ambos campos'); // Mostrar error si están vacíos
-      return;
-    }
-    router.push('/Dashboard'); // Llamar a la función de inicio de sesión si no están vacíos
-  }
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
+  
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
@@ -44,9 +31,16 @@ export default function Login({ isLogin, setIsLogin }) {
       });
 
       if (response.ok) {
-        if (isClient) {
-          router.push('/Dashboard');
-          return (<p>rftg</p>)
+        const data = await response.json();
+        const { role } = data; // Suponiendo que el rol viene en la respuesta como `role`
+
+        // Redirigir según el rol del usuario
+        if (role === 'admin') {
+          router.push('/admin-dashboard');
+        } else if (role === 'user') {
+          router.push('/user-dashboard');
+        } else {
+          setError('Rol desconocido'); // En caso de que no venga el rol esperado
         }
       } else {
         const errorData = await response.json();
@@ -59,8 +53,8 @@ export default function Login({ isLogin, setIsLogin }) {
   };
 
   return (
-    <div className="flex-1 flex justify-content items-center my-auto overflow-hidden bg-white">
-      <div className="m-auto flex justify-content items-center w-full max-w-4xl overflow-hidden rounded-lg bg-white shadow-lg">
+    <div className="flex-1 flex justify-content items-center my-auto overflow-hidden bg-gray-100">
+      <div className="m-auto flex justify-content items-center w-full max-w-4xl overflow-hidden rounded-lg bg-white shadow-xl">
         <div className="w-1/2 bg-[#14132F] p-8 text-white">
           <h2 className="mb-4 text-2xl font-bold">INICIAR SESIÓN</h2>
           <form className="space-y-8 mt-2" onSubmit={handleLogin}>
@@ -93,7 +87,7 @@ export default function Login({ isLogin, setIsLogin }) {
             <a href="#" className="block mt-0 text-sm hover:underline">
               Olvidé mi contraseña
             </a>
-            <Button  type="submit" className="w-full bg-white text-[#14132F] hover:text-white hover:bg-[#171738]">
+            <Button type="submit" className="w-full bg-white text-[#14132F] hover:text-white hover:bg-[#171738]">
               Ingresar
             </Button>
           </form>
@@ -110,7 +104,7 @@ export default function Login({ isLogin, setIsLogin }) {
             <h2 className="mt-2 text-2xl font-bold text-[#14132F]">MESA DE PARTES</h2>
             <p className="text-gray-600">INGENIERIA DE SISTEMAS</p>
           </div>
-          <Button variant="outline" onClick={() => setIsLogin(false)} className="border-[#14132F] text-[#14132F] hover:bg-[#14132F] hover:text-white">
+          <Button variant="outline" onClick={() => setIsLogin(false)} className=" w-full border-[#14132F] text-[#14132F] hover:bg-[#14132F] hover:text-white">
             Crear cuenta
           </Button>
         </div>

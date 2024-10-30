@@ -44,7 +44,7 @@ export default function Register({ isLogin, setIsLogin }) {
   };
 
   return (
-    <div className="flex-1 flex justify-content  items-center bg-gray-100">
+    <div className="flex-1 flex justify-content my-auto items-center bg-gray-100">
       <div className="m-auto flex w-full h-[70%]  max-w-4xl overflow-hidden rounded-lg bg-white shadow-lg">
         <div className="flex w-1/2 flex-col items-center justify-center bg-white p-8">
           <div className="mb-8 text-center">
@@ -58,7 +58,7 @@ export default function Register({ isLogin, setIsLogin }) {
             <p className="text-gray-600">INGENIERIA DE SISTEMAS</p>
           </div>
           <Button onClick={() => setIsLogin(true)}  className="w-full bg-[#14132F] text-white hover:bg-white 
-          hover:border-[#14132F] hover:text-[#14132F]">
+          hover:border-[#14132F] hover:border-[1px] hover:text-[#14132F]">
             Iniciar Sesión
           </Button>
         </div>

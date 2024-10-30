@@ -4,10 +4,7 @@ import { ChevronDown } from 'lucide-react';
 export default function TramitesForm() {
   return (
     <div className="w-[50%] mx-auto h-full bg-white p-6 rounded-lg shadow-md">
-      <nav className="text-sm mb-4">
-        <a href="#" className="text-blue-600 hover:underline">Inicio</a> &gt;&gt; trámites
-      </nav>
-      
+
       <form className="space-y-4">
         <button
           type="file"

@@ -87,7 +87,15 @@ export default function TramitesPage() {
   return (
     <div className="flex flex-col h-screen bg-gray-100">
      <HeaderTramite/>
-     <div className="flex-1 flex h-full justify-between items-center gap-4" >
+     <div className="w-[90%] mx-auto">
+     <nav className="text-sm mb-4">
+        <a href="#" className="text-blue-600 hover:underline">Inicio</a> &gt;&gt; trámites
+      </nav>
+      <div className="bg-blue-950 h-[1px] w-full my-1" >
+
+      </div>
+     </div>
+     <div className="flex-1 w-[90%] mx-auto flex h-full justify-between items-center gap-4" >
      <Content1Tramite/>
      <Content2Tramite/>
      </div>

@@ -1,28 +1,35 @@
-import { Button } from "@/components/ui/button"
+import { Bell, FileText, Home, HelpCircle, User } from "lucide-react"
+import Link from "next/link"
 
-export default function Header() {
+export default function Component({cambiar}) {
   return (
-    <header className="bg-gray-900 text-white p-4 flex justify-between items-center">
-      <div className="flex items-center">
-        <svg
-          className="w-6 h-6 mr-2"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-          />
-        </svg>
-        <h1 className="text-lg font-semibold">MESA DE PARTES - EPIS</h1>
-      </div>
-      <Button variant="outline" className="text-black font-bold border-white hover:bg-gray-800">
-        Plantillas de trámites
-      </Button>
-    </header>
+    <div className=" bg-[#1a1b2e]" >
+      <nav className="flex justify-between items-center h-16 w-[90%] text-white border-t border-gray-800 mx-auto ">
+          <div className="font-bold text-xl" >
+          MESA DE PARTES - EPIS
+          </div>
+          <Link href="#" className="flex flex-col items-end justify-center flex-1 h-full hover:text-white transition-colors">
+            <Home className="h-6 w-6"  onClick={() => cambiar(0)} />
+          </Link>
+          
+          <Link href="#" className="flex flex-col items-end justify-center  flex-1 h-full hover:text-white transition-colors">
+            <Bell className="h-6 w-6 visited:text-gray-700 "  onClick={() => cambiar(1)} />
+          </Link>
+          
+          <Link href="#" className="flex flex-col items-end justify-center flex-1 h-full hover:text-white transition-colors">
+            <FileText className="h-6 w-6" onClick={() => cambiar(2)} />
+          </Link>
+          
+          <Link href="#" className="flex flex-col items-end justify-center flex-1 h-full hover:text-white transition-colors">
+            <HelpCircle className="h-6 w-6"  onClick={() => cambiar(3)} />
+          </Link>
+          
+          <Link href="#" className="flex flex-col items-end justify-center flex-1 h-full hover:text-white transition-colors">
+            <User className="h-6 w-6"  onClick={() => cambiar(4)} />
+          </Link>
+      </nav>
+    </div>
+
+
   )
 }
