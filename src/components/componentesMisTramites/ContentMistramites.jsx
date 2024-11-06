@@ -113,16 +113,3 @@ export const Line =  () =>{
     )
 } 
 
-const ContenidoMisTramites = ()=>{
-    return(
-        <div className="flex-1 flex flex-col items-center space-y-10 w-[90%] mx-auto " >
-        <Header titulo = "Mis trámites" />
-        <Line/>
-        <ListaMisTramites/>
-
-
-        </div>
-    )
-}
-
-export default ContenidoMisTramites;

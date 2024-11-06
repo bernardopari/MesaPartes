@@ -45,7 +45,7 @@ const HomePage = () => {
   }
 
   return (
-    <div className="bg-white w-full flex flex-col h-screen text-gray-800 font-sans">
+    <div className="bg-white w-full flex flex-col h-screen text-gray-800 ">
       {/* Navbar */}
       <nav className="bg-[#14132F] text-white ">
         <div className=" w-[90%] p-4  flex justify-between items-center mx-auto" >
@@ -65,9 +65,9 @@ const HomePage = () => {
 
         {/* Ícono de usuario con Lucide React */}
         <div>
-          <a href="#" className="hover:underline flex items-center ml-8" onClick={cambiar}>
+          <Link href="/" className="hover:underline flex items-center ml-8" onClick={cambiar}>
             <UserRound className="w-8 h-8 text-white" /> 
-          </a>
+          </Link>
         </div>
       
         </div>
@@ -78,8 +78,8 @@ const HomePage = () => {
       {activo ? (
         <section className="flex-1  flex mx-auto w-[90%] justify-center items-center  gap-4">
           <div className="w-[60%] mb-8 pr-60" >
-            <h1 className="text-6xl font-bold text-[#14132F] ">BIENVENIDO</h1>
-            <p className="mt-6 text-lg text-gray-600">
+            <h1 className="text-6xl  text-[#14132F] font-rubik ">BIENVENIDO</h1>
+            <p className="mt-6 text-lg text-gray-600  ">
               Te damos la bienvenida al sistema de gestión de trámites de la Escuela de Ingeniería de Sistemas. A través de esta
               plataforma, podrás presentar y seguir tus trámites de manera digital, agilizando el proceso de gestión de documentos.
               <br /><br />
