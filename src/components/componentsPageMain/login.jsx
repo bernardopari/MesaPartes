@@ -1,17 +1,31 @@
 'use client';
-import { useState, useEffect } from 'react';
+
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Image from 'next/image';
 
+//////////////////////////////////////////////////////////////////////////
+/// Componente Login
+/// Este componente permite a los usuarios autenticarse en la aplicación.
+/// Funcionalidades principales:
+/// - Entrada de credenciales (email y contraseña).
+/// - Envío de datos al servidor para autenticación.
+/// - Redirección basada en el rol del usuario.
+/// - Muestra de errores en caso de fallos en la autenticación.
+//////////////////////////////////////////////////////////////////////////
+
 export default function Login({ isLogin, setIsLogin }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState(''); // Estado para almacenar el email del usuario.
+  const [password, setPassword] = useState(''); // Estado para almacenar la contraseña del usuario.
+  const [error, setError] = useState(''); // Estado para manejar mensajes de error.
   const router = useRouter();
-  
+
+  //////////////////////////////////////////////////////////////////////////
+  ////// función para la autenticación o logeo
+  //////////////////////////////////////////////////////////////////////////
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
@@ -52,12 +66,17 @@ export default function Login({ isLogin, setIsLogin }) {
     }
   };
 
+  //////////////////////////////////////////////////////////////////////////
+  ////// Renderizado del formulario de inicio de sesión
+  //////////////////////////////////////////////////////////////////////////
   return (
     <div className="flex-1 flex justify-content items-center my-auto overflow-hidden bg-gray-100">
       <div className="m-auto flex justify-content items-center w-full max-w-4xl overflow-hidden rounded-lg bg-white shadow-xl">
+        {/* Sección de inicio de sesión */}
         <div className="w-1/2 bg-[#14132F] p-8 text-white">
           <h2 className="mb-4 text-2xl font-bold">INICIAR SESIÓN</h2>
           <form className="space-y-8 mt-2" onSubmit={handleLogin}>
+            {/* Campo de usuario */}
             <div>
               <Label htmlFor="usuario" className="text-white">
                 Usuario:
@@ -70,6 +89,8 @@ export default function Login({ isLogin, setIsLogin }) {
                 required
               />
             </div>
+
+            {/* Campo de contraseña */}
             <div>
               <Label htmlFor="contrasena" className="text-white">
                 Contraseña:
@@ -83,17 +104,26 @@ export default function Login({ isLogin, setIsLogin }) {
                 required
               />
             </div>
+
+            {/* Mensaje de error */}
             {error && <p className="text-red-500">{error}</p>}
+
+            {/* Enlace para recuperar contraseña */}
             <a href="#" className="block mt-0 text-sm hover:underline">
               Olvidé mi contraseña
             </a>
+
+            {/* Botón para enviar el formulario */}
             <Button type="submit" className="w-full bg-white text-[#14132F] hover:text-white hover:bg-[#171738]">
               Ingresar
             </Button>
           </form>
         </div>
+
+        {/* Sección de información lateral */}
         <div className="flex w-1/2 flex-col items-center justify-center bg-white p-8">
           <div className="mb-4 text-center">
+            {/* Logo de la aplicación */}
             <Image
               src={"/images/LogoEscuela.png"}
               className="mx-auto h-24 w-24 text-[#14132F]"
@@ -104,7 +134,13 @@ export default function Login({ isLogin, setIsLogin }) {
             <h2 className="mt-2 text-2xl font-bold text-[#14132F]">MESA DE PARTES</h2>
             <p className="text-gray-600">INGENIERIA DE SISTEMAS</p>
           </div>
-          <Button variant="outline" onClick={() => setIsLogin(false)} className=" w-full border-[#14132F] text-[#14132F] hover:bg-[#14132F] hover:text-white">
+
+          {/* Botón para cambiar a la creación de cuenta */}
+          <Button
+            variant="outline"
+            onClick={() => setIsLogin(false)}
+            className="w-full border-[#14132F] text-[#14132F] hover:bg-[#14132F] hover:text-white"
+          >
             Crear cuenta
           </Button>
         </div>
